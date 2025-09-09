@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 func main() {
 	fmt.Println("Hello World")
@@ -24,9 +28,24 @@ func main() {
 	}
 	fmt.Println(sbytes)
 	rbytes := []int16{}
-	fmt.Println("String Bytes:")
+	fmt.Println("Rune Bytes:")
 	for value := range len(r) {
 		rbytes = append(rbytes, int16(r[value]))
 	}
 	fmt.Println(rbytes)
+
+	fmt.Println(sumdigits(123))
+	fmt.Println(sumdigits(457))
+	fmt.Println(sumdigits(32))
+}
+
+func sumdigits(input int) int {
+	str := strconv.Itoa(input)
+	arr := strings.Split(str, "")
+	value := 0
+	for _, element := range arr {
+		element, _ := strconv.Atoi(element)
+		value += int(element)
+	}
+	return value
 }
